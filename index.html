@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROGAMME</title>
+    <link rel="logo" href="/logo1.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap">
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add("visible");
+                  } else {
+                      entry.target.classList.remove("visible");
+                  }
+              });
+          });
+      
+          // Observe initial elements
+          const hiddenElements = document.querySelectorAll(".hilang");
+          hiddenElements.forEach((element) => observer.observe(element));
+      
+          // Create a MutationObserver to watch for changes in the DOM
+          const mutationObserver = new MutationObserver((mutationsList) => {
+              mutationsList.forEach((mutation) => {
+                  if (mutation.type === "childList") {
+                      // If new elements are added, observe them
+                      mutation.addedNodes.forEach((node) => {
+                          if (node.nodeType === 1 && node.classList.contains("hilang")) {
+                              observer.observe(node);
+                          }
+                      });
+      
+                      // If elements are removed, unobserve them
+                      mutation.removedNodes.forEach((node) => {
+                          if (node.nodeType === 1 && node.classList.contains("hilang")) {
+                              observer.unobserve(node);
+                          }
+                      });
+                  }
+              });
+          });
+      
+          // Start observing the document body for changes
+          mutationObserver.observe(document.body, {
+              childList: true,
+              subtree: true,
+          });
+      });
+  </script>
+
+</head>
+
+<body class="bg-[#B8C0DB] box border">
+    <header class="z-[999] relative">
+        <nav class="top-0">
+            <ul class="flex justify-center gap-4 bg-[#30656D] list-none text-white p-2 fixed w-full z-10 nav-menu">
+            <li class="hover:text-[#40C219]">
+              <a href="#home">Home</a>
+            </li>
+            <li class="hover:text-[#FFDE59]">
+                <a href="#about">About</a></li>
+            <li class="hover:text-[#ff0707]">
+                <a href="#content">Content</a></li>
+                
+                
+          </ul>
+        </nav>
+        
+    </header>
+    <main>
+    <section id="home" class="flex h-screen text-center justify-center flex-col items-center">
+        <img src="/bedel.png" alt="bedel" class="max-w-full mx-auto">
+        <h1 id="text-1" class="text-3xl font-semibold text-[#101010] hilang visible " style="font-family: 'Times New Roman', Times, serif">Hai nama saya,</h1>
+        <h2 id="text-2" class="text-8xl font-extrabold text-[#101010] hilang visible" style="font-family: 'Times New Roman', Times, serif;">Fadl Ramdhani</h2>
+        <h3 id="text-3" class="text-3xl font-semibold text-[#101010] hilang visible " style="font-family: 'Times New Roman', Times, serif">Mahasiswa Upn Veteran Jakarta</h3>
+        <h4 id="text-4" class="text-3xl font-semibold text-[#101010] hilang visible " style="font-family: 'Times New Roman', Times, serif"> Fakultas Ilmu Komputer</h4>
+      </section>
+    <section id="about" class="h-3/6 mt-18 sm:flex sm:flex-col sm:items-center">
+        <br>
+        <h2 class="text-6xl mt-32 font-semibold text-[#101010] text-transparent bg-clip-text transition-opacity duration-1000 ease-in-out p-6 hilang visible" style="font-family: 'Archivo Black' sans-serif; color: black;">
+          About Me
+        </h2>
+        <p class="text-base text-[#101010] mb-10 pr-15 py-10 text-justify sm:w-[50%] hilang visible" style="font-family: 'Times New Roman', times, serif ">
+            Saya adalah seorang individu yang memiliki rasa ingin tahu yang tinggi, Saya selalu bersemangat untuk mempelajari hal-hal baru dan terus menggali pengetahuan. 
+            Saat ini, saya sedang fokus dalam mendalami dunia pemrograman dan teknologi. Keterampilan saya dalam mengajukan pertanyaan, mendengarkan, membaca, dan melakukan brainstorming membantu saya untuk terus berkembang.
+            Saya adalah seseorang yang berpikiran terbuka, tidak pernah meremehkan apapun, dan senang menjadikan proses belajar sebagai pengalaman yang menyenangkan. 
+            Semangat saya untuk terus belajar akan membantu saya mencapai kesuksesan di bidang yang saya geluti.
+        </p>
+      </section>
+      <section id="content" class="mt-24 p-6">
+        <h3 class=" mb-10 text-6xl font-semibold bg-gradient-to-r text-[#101010] text-transparent bg-clip-text text-center hilang visible" style="font-family: 'Archivo Black' sans-serif; color: black; ">Experience</h3>
+        <div class="flex flex-wrap justify-center items-center mt-6 gap-4 hilang visible">
+        <div class="p-2 rounded-lg bg-zinc-800">
+            <img width="60px" height="60px" src="/canva.png" alt="Logo canva">
+          </div>
+          <div class="p-2 rounded-lg bg-zinc-800">
+            <img width="60px" height="60px" src="/bahasa c.png" alt="Logo bahasac">
+          </div>
+          
+          <div class="p-2 rounded-lg bg-zinc-800">
+            <img width="60px" height="60px" src="/bahasacplus.png" alt="logo bahasa c++">
+          </div>
+        </setion>
+        </main>
+        <footer class="mt-24 bg-[#30656d] flex flex-col justify-center items-center">
+          <p class="text-[#101010] font-thin p-2 "> 
+            <a href=" https://line.me/ti/p/~sastrokulino">@copyright 2024
+              
+            </a>
+          </p>
+             
+          <div class="mt-1 flex gap-3 mb-4">
+            <a href="https://www.instagram.com/bedeel.e?igsh=ZGVyc244c2p6MGR1"><img width="25px" src="/instagram.png" alt="Logo instagram"></a>
+            <a href="https://www.linkedin.com/in/fadl-ramdhani?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><img width="25px" src="/likedin.png" alt="Logo Linkedin"></a>
+          </div>
+        </footer>
+        
+        
+         </body>
+         </html>
